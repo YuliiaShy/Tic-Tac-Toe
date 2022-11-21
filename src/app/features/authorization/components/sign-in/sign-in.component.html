@@ -1,12 +1,16 @@
 <div *ngIf="!isResetPasswordPage">
-  <form >
 
-    <app-email-input ></app-email-input>
+ <form [formGroup]="signInForm" class="login-form">
+        <app-email-input [formControl]="email"></app-email-input>
     <app-password-input
+      [formControl]="password"
+      [title]="passwordTitle"
+      [isPasswordValid]="isPasswordValid"
+      [isPasswordTouched]="isPasswordTouched"
     ></app-password-input>
 
     <p class="forgot__link--wrapper">
-      <a class="forgot__link" [routerLink]="['/', routerLinks.authorization, routerLinks.signIn, routerLinks.resetPass]">
+      <a class="forgot__link" >
         Forgot your password?
       </a>
     </p>
@@ -18,7 +22,7 @@
 
   <p class="additional-question__wrapper">
     <span class="additional-question">Don't have an account?</span>
-    <a class="additional-question__link" [routerLink]="['/', routerLinks.authorization, routerLinks.signUp]">
+    <a class="additional-question__link">
       <span>Sign Up now</span>
       <img src="../../../../../assets/img/arrow-right.svg" alt="arrow_right_icon">
     </a>
